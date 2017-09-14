@@ -59,7 +59,6 @@ class ReferralFooter {
 	function wpcom_referral_footer_css() {
 		wp_enqueue_style(  'wpcom-referral-footer-styles', plugins_url( 'style.css', __FILE__ ) );
 	}
-	
 
 }
 
