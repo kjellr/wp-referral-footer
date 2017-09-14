@@ -24,8 +24,7 @@ class ReferralFooter {
 	function __construct() {
 		add_action( 'admin_menu', array( $this, 'wpcom_referral_footer_options' ) );
 		add_action( 'get_footer', array( $this, 'wpcom_referral_footer_render' ) );
-
-		wp_enqueue_style( 'wpcom-referral-footer-styles', plugins_url( 'style.css', __FILE__ ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'wpcom_referral_footer_css' ) );
 	}
 
 	/**
@@ -36,10 +35,15 @@ class ReferralFooter {
 	}
 
 	/**
-	 * Include the plugin settings page.
+	 * Include the plugin settings page, but only if
+	 * the current user has the correct permissions.
 	 */
 	function wpcom_referral_footer_options_content() {
-		include( 'config.php' );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		} else {
+			include( 'config.php' );
+		}
 	}
 
 	/**
@@ -47,6 +51,13 @@ class ReferralFooter {
 	 */
 	function wpcom_referral_footer_render() {
 		include( 'render.php' );
+	}
+
+	/**
+	 * Register + enqueue the footer stylesheet.
+	 */
+	function wpcom_referral_footer_css() {
+		wp_enqueue_style(  'wpcom-referral-footer-styles', plugins_url( 'style.css', __FILE__ ) );
 	}
 	
 
