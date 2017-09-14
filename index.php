@@ -20,8 +20,11 @@
  */
 
 class ReferralFooter {
+
 	
 	function __construct() {
+		define( 'REFERRALFOOTER__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+		
 		add_action( 'admin_menu', array( $this, 'wpcom_referral_footer_options' ) );
 		add_action( 'get_footer', array( $this, 'wpcom_referral_footer_render' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'wpcom_referral_footer_css' ) );
@@ -97,7 +100,7 @@ class ReferralFooter {
 	 * Include the footer element itself.
 	 */
 	function wpcom_referral_footer_render() {
-		include( 'render.php' );
+		require_once( REFERRALFOOTER__PLUGIN_DIR . 'render.php' );
 	}
 
 	/**
