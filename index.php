@@ -24,11 +24,13 @@ class ReferralFooter {
 	function __construct() {
 		define( 'REFERRALFOOTER__PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 		
-		add_action( 'admin_menu',			array( $this, 'wpcom_referral_footer_options' ) );
-		add_action( 'get_footer',			array( $this, 'wpcom_referral_footer_render' ) );
-		add_action( 'wp_enqueue_scripts', 	array( $this, 'wpcom_referral_footer_css' ) );
-		add_action( 'admin_init', 			array( $this, 'wpcom_referral_footer_settings_init' ) );
+		add_action( 'admin_menu',				array( $this, 'wpcom_referral_footer_options' ) );
+		add_action( 'get_footer',				array( $this, 'wpcom_referral_footer_render' ) );
+		add_action( 'wp_enqueue_scripts', 		array( $this, 'wpcom_referral_footer_css' ) );
+		add_action(	'admin_enqueue_scripts',	array( $this, 'wpcom_referral_footer_admin_css_js' ) );
+		add_action( 'admin_init', 				array( $this, 'wpcom_referral_footer_settings_init' ) );
 	}
+
 
 	/**
 	 * Add the "Referral Footer" item to WP-Admin
@@ -42,6 +44,7 @@ class ReferralFooter {
 		);
 	}
 
+
 	/**
 	 * Include the footer element itself.
 	 */
@@ -49,12 +52,23 @@ class ReferralFooter {
 		require_once( REFERRALFOOTER__PLUGIN_DIR . 'render.php' );
 	}
 
+
 	/**
-	 * Register + enqueue the footer stylesheet.
+	 * Enqueue the footer stylesheets.
 	 */
 	function wpcom_referral_footer_css() {
-		wp_enqueue_style(  'wpcom-referral-footer-styles', plugins_url( 'style.css', __FILE__ ) );
+		wp_enqueue_style( 'wpcom-referral-footer-styles', plugins_url( 'style.css', __FILE__ ) );
 	}
+
+
+	/**
+	 * Enqueue the color picker javascript + styles.
+	 */
+	function wpcom_referral_footer_admin_css_js() { 
+		wp_enqueue_script( 'scripts', plugins_url( 'scripts.js', __FILE__ ), array( 'jquery', 'wp-color-picker' ), '', true  );
+		wp_enqueue_style( 'wp-color-picker' );
+	}
+
 
 	/**
 	 * Register Plugin Settings
@@ -126,23 +140,24 @@ class ReferralFooter {
 	function wpcom_referral_footer_field_logo_color_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
-		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_logo_color]' value='<?php echo $options['wpcom_referral_footer_field_logo_color']; ?>' maxlength="7">
+		<input class="wpcom-referral-footer-color-picker" type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_logo_color]' value='<?php echo $options['wpcom_referral_footer_field_logo_color']; ?>' maxlength="7">
 		<?php
 	}
 
 	function wpcom_referral_footer_field_text_color_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
-		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_text_color]' value='<?php echo $options['wpcom_referral_footer_field_text_color']; ?>' maxlength="7">
+		<input class="wpcom-referral-footer-color-picker" type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_text_color]' value='<?php echo $options['wpcom_referral_footer_field_text_color']; ?>' maxlength="7">
 		<?php
 	}
 
 	function wpcom_referral_footer_field_hover_color_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
-		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_hover_color]' value='<?php echo $options['wpcom_referral_footer_field_hover_color']; ?>' maxlength="7">
+		<input class="wpcom-referral-footer-color-picker" type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_hover_color]' value='<?php echo $options['wpcom_referral_footer_field_hover_color']; ?>' maxlength="7">
 		<?php
 	}
+
 
 	/**
 	 * Callback functions for each section
@@ -153,6 +168,7 @@ class ReferralFooter {
 	function wpcom_referral_footer_settings_styles_callback() {
 		echo __( 'Customize the footer.', 'wpcom-referral-footer' );
 	}
+
 
 	/**
 	 * Render the options page
