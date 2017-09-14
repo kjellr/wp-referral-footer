@@ -22,15 +22,31 @@
 class ReferralFooter {
 	
 	function __construct() {
-		add_action( 'admin_menu', 'wpcom_referral_footer_options' );
+		add_action( 'admin_menu', array( $this, 'wpcom_referral_footer_options' ) );
+		add_action( 'get_footer', array( $this, 'wpcom_referral_footer_render' ) );
 
-		function wpcom_referral_footer_options() {
-			add_theme_page( 'WordPress.com Referral Footer Options', 'Referral Footer', 'manage_options', 'wpcom_referral_footer_options', 'wpcom_referral_footer_options_content' );
-		}
+		wp_enqueue_style( 'wpcom-referral-footer-styles', plugins_url( 'style.css', __FILE__ ) );
+	}
 
-		function wpcom_referral_footer_options_content() {
-			include( 'config.php' );
-		}
+	/**
+	 * Add the "Referral Footer" item to WP-Admin
+	 */
+	function wpcom_referral_footer_options() {
+		add_theme_page( 'WordPress.com Referral Footer Options', 'Referral Footer', 'manage_options', 'wpcom_referral_footer_options', array( $this, 'wpcom_referral_footer_options_content' ) );
+	}
+
+	/**
+	 * Include the plugin settings page.
+	 */
+	function wpcom_referral_footer_options_content() {
+		include( 'config.php' );
+	}
+
+	/**
+	 * Include the footer element itself.
+	 */
+	function wpcom_referral_footer_render() {
+		include( 'render.php' );
 	}
 	
 

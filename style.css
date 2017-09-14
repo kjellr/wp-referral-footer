@@ -1,0 +1,84 @@
+/* Base Styles */
+.wp-footer {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+
+	width: 100%;
+	margin: 0 auto;
+	padding:  2em 0;
+	border-top: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+}
+
+	.wp-footer .wp-footer__container {
+			display: -webkit-box;
+			display: -moz-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			margin: 0 auto;
+		}
+
+	.wp-footer .wp-footer__logo {
+		height: 4em;
+		width: 4em;
+		padding-right: 1em;
+	}
+
+	.wp-footer .wp-footer__headline {
+		font-weight: normal;
+		white-space: nowrap;
+		color: #000;
+		margin: 0;
+	}
+
+	.wp-footer .wp-footer__body {
+		font-style: italic;
+		font-weight: normal;
+		color: #000;
+		margin: 0;
+	}
+
+	.wp-footer .wp-footer__arrow {
+		height: 0.5em;
+		width: auto;
+		padding: 0 0 0 0.15em;
+	}
+
+	.wp-footer .wp-footer__arrow path {
+		fill: #000;
+	}
+
+
+/* Hover Styles */
+.wp-footer .wp-footer__link:hover .wp-footer__headline {
+	color: #0087be;
+}
+
+.wp-footer .wp-footer__link:hover .wp-footer__body {
+	color: #0087be;
+}
+
+.wp-footer .wp-footer__link:hover .wp-footer__arrow path {
+	fill: #0087be;
+}
+
+/* Small Screen */
+@media screen and (max-width: 480px) {
+	
+	.wp-footer .wp-footer__container {
+		flex-direction: column;
+	}
+
+	.wp-footer .wp-footer__logo {
+		padding: 0 0 1em 0;
+	}
+
+	.wp-footer .wp-footer__text {
+		text-align: center;
+	}
+
+}
