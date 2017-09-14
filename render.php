@@ -5,7 +5,7 @@
 		 */
 		$wpcom_referral_footer_options = get_option( 'wpcom_referral_footer_settings' );
 	?>
-	
+
 	<style type="text/css">
 		/* Logo Color */
 		.wp-footer .wp-footer__logo path {
@@ -28,6 +28,11 @@
 		}
 		.wp-footer .wp-footer__link:hover .wp-footer__arrow path {
 			fill: <?php echo $wpcom_referral_footer_options['wpcom_referral_footer_field_hover_color']; ?>;
+		}
+
+		/* Border Color */
+		.wp-footer {
+			border-color: <?php echo $wpcom_referral_footer_options['wpcom_referral_footer_field_dividers_color']; ?>;
 		}
 	</style>
 

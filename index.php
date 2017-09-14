@@ -123,6 +123,13 @@ class ReferralFooter {
 			'wpcom_referral_footer_ReferralFooterPage_styles' 
 		);
 
+		add_settings_field( 
+			'wpcom_referral_footer_field_dividers_color', 
+			__( 'Dividers Color', 'wpcom-referral-footer' ), 
+			array( $this, 'wpcom_referral_footer_field_dividers_color_render' ), 
+			'ReferralFooterPage', 
+			'wpcom_referral_footer_ReferralFooterPage_styles' 
+		);
 
 	}
 
@@ -158,15 +165,22 @@ class ReferralFooter {
 		<?php
 	}
 
+	function wpcom_referral_footer_field_dividers_color_render() {
+		$options = get_option( 'wpcom_referral_footer_settings' );
+		?>
+		<input class="wpcom-referral-footer-color-picker" type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_dividers_color]' value='<?php echo $options['wpcom_referral_footer_field_dividers_color']; ?>' maxlength="7">
+		<?php
+	}
+
 
 	/**
 	 * Callback functions for each section
 	 */
 	function wpcom_referral_footer_settings_setup_callback() {
-		echo __( 'Insert your referral link.', 'wpcom-referral-footer' );
+		echo __( '', 'wpcom-referral-footer' );
 	}
 	function wpcom_referral_footer_settings_styles_callback() {
-		echo __( 'Customize the footer.', 'wpcom-referral-footer' );
+		echo __( '', 'wpcom-referral-footer' );
 	}
 
 
@@ -180,9 +194,9 @@ class ReferralFooter {
 			<h2>WordPress.com Referral Footer</h2>
 
 			<?php
-			settings_fields( 'ReferralFooterPage' );
-			do_settings_sections( 'ReferralFooterPage' );
-			submit_button();
+				settings_fields( 'ReferralFooterPage' );
+				do_settings_sections( 'ReferralFooterPage' );
+				submit_button();
 			?>
 
 		</form>
