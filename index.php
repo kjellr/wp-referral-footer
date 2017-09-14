@@ -39,11 +39,7 @@ class ReferralFooter {
 	 * the current user has the correct permissions.
 	 */
 	function wpcom_referral_footer_options_content() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		} else {
 			include( 'config.php' );
-		}
 	}
 
 	/**
