@@ -237,7 +237,9 @@ class ReferralFooter {
 		<div class="wrap">
 			<h2><?php _e( 'WordPress.com Referral Footer' ); ?></h2>
 
-			<p class="description"><?php _e( 'Add a "Powered by WordPress" referral footer to the bottom of your page' ); ?></p>
+			<p class="description">
+				<?php _e( 'Add a "Powered by WordPress" referral footer to the bottom of your page' ); ?>
+			</p>
 			<br />
 
 			<form action='options.php' method='post'>
