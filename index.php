@@ -50,6 +50,7 @@ class ReferralFooter {
 	 */
 	function wpcom_referral_footer_render() {
 		include( REFERRALFOOTER__PLUGIN_DIR . 'render.php' );
+		wpcom_referral_footer_render_make();
 	}
 
 
