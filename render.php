@@ -32,7 +32,7 @@
 
 		/* Border Color */
 		.wp-footer {
-			border-color: <?php echo $wpcom_referral_footer_options['wpcom_referral_footer_field_dividers_color']; ?>;
+			border-color: <?php echo $wpcom_referral_footer_options['wpcom_referral_footer_field_border_color']; ?>;
 		}
 
 		/* Hide Default Footer */

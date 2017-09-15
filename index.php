@@ -77,6 +77,11 @@ class ReferralFooter {
 
 		register_setting( 'ReferralFooterPage', 'wpcom_referral_footer_settings' );
 
+		/**
+		 * Set up two sections: Setup & Styles
+		 */
+
+		// Setup
 		add_settings_section(
 			'wpcom_referral_footer_ReferralFooterPage_setup', 
 			__( 'Setup', 'wpcom-referral-footer' ), 
@@ -84,6 +89,7 @@ class ReferralFooter {
 			'ReferralFooterPage'
 		);
 
+		// Styles
 		add_settings_section(
 			'wpcom_referral_footer_ReferralFooterPage_styles', 
 			__( 'Styles', 'wpcom-referral-footer' ), 
@@ -91,6 +97,27 @@ class ReferralFooter {
 			'ReferralFooterPage'
 		);
 
+
+		/**
+		 * Callback functions
+		 */
+
+		// Setup
+		function wpcom_referral_footer_settings_setup_callback() {
+			echo __( '', 'wpcom-referral-footer' );
+		}
+		
+		// Styles
+		function wpcom_referral_footer_settings_styles_callback() {
+			echo __( '', 'wpcom-referral-footer' );
+		}
+
+
+		/**
+		 * Add settings fields
+		 */
+
+		// Referral URL
 		add_settings_field( 
 			'wpcom_referral_footer_field_refer_url', 
 			__( 'Referral URL', 'wpcom-referral-footer' ), 
@@ -99,6 +126,7 @@ class ReferralFooter {
 			'wpcom_referral_footer_ReferralFooterPage_setup' 
 		);
 
+		// "Powered by WordPress" Footer
 		add_settings_field( 
 			'wpcom_referral_footer_field_poweredby_class', 
 			__( 'Default Footer Class', 'wpcom-referral-footer' ), 
@@ -107,6 +135,7 @@ class ReferralFooter {
 			'wpcom_referral_footer_ReferralFooterPage_setup' 
 		);
 
+		// Logo color
 		add_settings_field( 
 			'wpcom_referral_footer_field_logo_color', 
 			__( 'Logo Color', 'wpcom-referral-footer' ), 
@@ -115,6 +144,7 @@ class ReferralFooter {
 			'wpcom_referral_footer_ReferralFooterPage_styles' 
 		);
 
+		// Text color
 		add_settings_field( 
 			'wpcom_referral_footer_field_text_color', 
 			__( 'Text Color', 'wpcom-referral-footer' ), 
@@ -123,6 +153,7 @@ class ReferralFooter {
 			'wpcom_referral_footer_ReferralFooterPage_styles' 
 		);
 
+		// Text hover color
 		add_settings_field( 
 			'wpcom_referral_footer_field_hover_color', 
 			__( 'Text Hover Color', 'wpcom-referral-footer' ), 
@@ -131,10 +162,11 @@ class ReferralFooter {
 			'wpcom_referral_footer_ReferralFooterPage_styles' 
 		);
 
+		// Border color
 		add_settings_field( 
-			'wpcom_referral_footer_field_dividers_color', 
-			__( 'Dividers Color', 'wpcom-referral-footer' ), 
-			array( $this, 'wpcom_referral_footer_field_dividers_color_render' ), 
+			'wpcom_referral_footer_field_border_color', 
+			__( 'border Color', 'wpcom-referral-footer' ), 
+			array( $this, 'wpcom_referral_footer_field_border_color_render' ), 
 			'ReferralFooterPage', 
 			'wpcom_referral_footer_ReferralFooterPage_styles' 
 		);
@@ -145,6 +177,8 @@ class ReferralFooter {
 	/**
 	 * Settings Fields
 	 */
+
+	// Referral URL field
 	function wpcom_referral_footer_field_refer_url_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
@@ -153,6 +187,7 @@ class ReferralFooter {
 		<?php
 	}
 
+	// "Powered by WordPress" footer field
 	function wpcom_referral_footer_field_poweredby_class_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
@@ -161,6 +196,7 @@ class ReferralFooter {
 		<?php
 	}
 
+	// Logo color field
 	function wpcom_referral_footer_field_logo_color_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
@@ -168,6 +204,7 @@ class ReferralFooter {
 		<?php
 	}
 
+	// Text color field
 	function wpcom_referral_footer_field_text_color_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
@@ -175,6 +212,7 @@ class ReferralFooter {
 		<?php
 	}
 
+	// Text hover color field
 	function wpcom_referral_footer_field_hover_color_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
@@ -182,22 +220,12 @@ class ReferralFooter {
 		<?php
 	}
 
-	function wpcom_referral_footer_field_dividers_color_render() {
+	// Border color field
+	function wpcom_referral_footer_field_border_color_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
-		<input class="wpcom-referral-footer-color-picker" type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_dividers_color]' value='<?php echo $options['wpcom_referral_footer_field_dividers_color']; ?>' maxlength="7">
+		<input class="wpcom-referral-footer-color-picker" type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_border_color]' value='<?php echo $options['wpcom_referral_footer_field_border_color']; ?>' maxlength="7">
 		<?php
-	}
-
-
-	/**
-	 * Callback functions for each section
-	 */
-	function wpcom_referral_footer_settings_setup_callback() {
-		echo __( '', 'wpcom-referral-footer' );
-	}
-	function wpcom_referral_footer_settings_styles_callback() {
-		echo __( '', 'wpcom-referral-footer' );
 	}
 
 
