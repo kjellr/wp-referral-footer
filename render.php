@@ -34,6 +34,11 @@
 		.wp-footer {
 			border-color: <?php echo $wpcom_referral_footer_options['wpcom_referral_footer_field_dividers_color']; ?>;
 		}
+
+		/* Hide Default Footer */
+		<?php if ( $wpcom_referral_footer_options['wpcom_referral_footer_field_poweredby_class'] ) {
+			echo "." . esc_html( $wpcom_referral_footer_options['wpcom_referral_footer_field_poweredby_class'] ) . '{ display: none; }'; 
+		} ?>
 	</style>
 
 	<div class="wp-footer__container">

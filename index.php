@@ -149,6 +149,7 @@ class ReferralFooter {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
 		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_refer_url]' value='<?php echo $options['wpcom_referral_footer_field_refer_url']; ?>'>
+		<p class="description"><?php _e( 'For example: https://refer.wordpress.com/r/01/wordpress-com/'  ); ?></p>
 		<?php
 	}
 
@@ -156,6 +157,7 @@ class ReferralFooter {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
 		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_poweredby_class]' value='<?php echo $options['wpcom_referral_footer_field_poweredby_class']; ?>'>
+			<p class="description"><?php _e( 'Optional. Enter the class name of the default "Powered by WordPress" footer if you&rsquo;d like to hide it.'  ); ?></p>
 		<?php
 	}
 
