@@ -100,6 +100,14 @@ class ReferralFooter {
 		);
 
 		add_settings_field( 
+			'wpcom_referral_footer_field_poweredby_class', 
+			__( 'Default Footer Class', 'wpcom-referral-footer' ), 
+			array( $this, 'wpcom_referral_footer_field_poweredby_class_render' ), 
+			'ReferralFooterPage', 
+			'wpcom_referral_footer_ReferralFooterPage_setup' 
+		);
+
+		add_settings_field( 
 			'wpcom_referral_footer_field_logo_color', 
 			__( 'Logo Color', 'wpcom-referral-footer' ), 
 			array( $this, 'wpcom_referral_footer_field_logo_color_render' ), 
@@ -141,6 +149,13 @@ class ReferralFooter {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
 		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_refer_url]' value='<?php echo $options['wpcom_referral_footer_field_refer_url']; ?>'>
+		<?php
+	}
+
+	function wpcom_referral_footer_field_poweredby_class_render() {
+		$options = get_option( 'wpcom_referral_footer_settings' );
+		?>
+		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_poweredby_class]' value='<?php echo $options['wpcom_referral_footer_field_poweredby_class']; ?>'>
 		<?php
 	}
 
