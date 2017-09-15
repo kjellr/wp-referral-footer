@@ -10,7 +10,7 @@
  * @wordpress-plugin
  * Plugin Name: WordPress.com Referral Footer
  * Plugin URI:  http://kjellr.com
- * Description: Displays a "Powered by WordPress" footer element with a referral footer.
+ * Description: Displays a "Powered by WordPress" footer element with a referral link.
  * Version:     0.1
  * Author:      Kjell Reigstad
  * Author URI:  http://kjellr.com
