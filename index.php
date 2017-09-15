@@ -150,7 +150,7 @@ class ReferralFooter {
 		// Border color
 		add_settings_field( 
 			'wpcom_referral_footer_field_border_color', 
-			__( 'border Color', 'wpcom-referral-footer' ), 
+			__( 'Border Color', 'wpcom-referral-footer' ), 
 			array( $this, 'wpcom_referral_footer_field_border_color_render' ), 
 			'ReferralFooterPage', 
 			'wpcom_referral_footer_ReferralFooterPage_styles' 
@@ -182,7 +182,7 @@ class ReferralFooter {
 	function wpcom_referral_footer_field_refer_url_render() {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
-		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_refer_url]' value='<?php echo $options['wpcom_referral_footer_field_refer_url']; ?>'>
+		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_refer_url]' value='<?php echo $options['wpcom_referral_footer_field_refer_url']; ?>' style='width:100%;max-width:760px'>
 		<p class="description"><?php _e( 'For example: https://refer.wordpress.com/r/01/wordpress-com/'  ); ?></p>
 		<?php
 	}
@@ -225,6 +225,7 @@ class ReferralFooter {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
 		<input class="wpcom-referral-footer-color-picker" type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_border_color]' value='<?php echo $options['wpcom_referral_footer_field_border_color']; ?>' maxlength="7">
+		<p class="description"><?php _e( 'Leave blank to hide the top and bottom borders.'  ); ?></p>
 		<?php
 	}
 
@@ -237,9 +238,7 @@ class ReferralFooter {
 		<div class="wrap">
 			<h2><?php _e( 'WordPress.com Referral Footer' ); ?></h2>
 
-			<p class="description">
-				<?php _e( 'Add a "Powered by WordPress" referral footer to the bottom of your page' ); ?>
-			</p>
+			<p class="description"><?php _e( 'Add a "Powered by WordPress" referral footer to the bottom of your site.' ); ?></p>
 			<br />
 
 			<form action='options.php' method='post'>
