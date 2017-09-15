@@ -49,7 +49,7 @@ class ReferralFooter {
 	 * Include the footer element itself.
 	 */
 	function wpcom_referral_footer_render() {
-		require_once( REFERRALFOOTER__PLUGIN_DIR . 'render.php' );
+		include( REFERRALFOOTER__PLUGIN_DIR . 'render.php' );
 	}
 
 
