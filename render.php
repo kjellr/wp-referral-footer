@@ -1,8 +1,6 @@
 <div class="wp-footer">
 	<?php 
-		/**
-		 * Fetch plugin settings
-		 */
+		/* Fetch Plugin Settings */
 		$wpcom_referral_footer_options = get_option( 'wpcom_referral_footer_settings' );
 	?>
 

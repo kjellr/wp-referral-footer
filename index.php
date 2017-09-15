@@ -99,21 +99,6 @@ class ReferralFooter {
 
 
 		/**
-		 * Callback functions
-		 */
-
-		// Setup
-		function wpcom_referral_footer_settings_setup_callback() {
-			echo __( '', 'wpcom-referral-footer' );
-		}
-		
-		// Styles
-		function wpcom_referral_footer_settings_styles_callback() {
-			echo __( '', 'wpcom-referral-footer' );
-		}
-
-
-		/**
 		 * Add settings fields
 		 */
 
@@ -171,6 +156,21 @@ class ReferralFooter {
 			'wpcom_referral_footer_ReferralFooterPage_styles' 
 		);
 
+	}
+
+
+	/**
+	 * Callback functions
+	 */
+
+	// Setup
+	function wpcom_referral_footer_settings_setup_callback() {
+		echo __( '', 'wpcom-referral-footer' );
+	}
+	
+	// Styles
+	function wpcom_referral_footer_settings_styles_callback() {
+		echo __( '', 'wpcom-referral-footer' );
 	}
 
 
@@ -234,17 +234,22 @@ class ReferralFooter {
 	 */
 	function wpcom_referral_footer_options_page() {
 		?>
-		<form action='options.php' method='post'>
+		<div class="wrap">
+			<h2><?php _e( 'WordPress.com Referral Footer' ); ?></h2>
 
-			<h2>WordPress.com Referral Footer</h2>
+			<p class="description"><?php _e( 'Add a "Powered by WordPress" referral footer to the bottom of your page' ); ?></p>
+			<br />
 
-			<?php
-				settings_fields( 'ReferralFooterPage' );
-				do_settings_sections( 'ReferralFooterPage' );
-				submit_button();
-			?>
+			<form action='options.php' method='post'>
 
-		</form>
+				<?php
+					settings_fields( 'ReferralFooterPage' );
+					do_settings_sections( 'ReferralFooterPage' );
+					submit_button();
+				?>
+
+			</form>
+		</div>
 		<?php
 	}
 
