@@ -114,7 +114,7 @@ class ReferralFooter {
 		// "Powered by WordPress" Footer
 		add_settings_field( 
 			'wpcom_referral_footer_field_poweredby_class', 
-			__( 'Default Footer Class', 'wpcom-referral-footer' ), 
+			__( 'Hide Default Footer', 'wpcom-referral-footer' ), 
 			array( $this, 'wpcom_referral_footer_field_poweredby_class_render' ), 
 			'ReferralFooterPage', 
 			'wpcom_referral_footer_ReferralFooterPage_setup' 
@@ -192,7 +192,7 @@ class ReferralFooter {
 		$options = get_option( 'wpcom_referral_footer_settings' );
 		?>
 		<input type='text' name='wpcom_referral_footer_settings[wpcom_referral_footer_field_poweredby_class]' value='<?php echo $options['wpcom_referral_footer_field_poweredby_class']; ?>'>
-			<p class="description"><?php _e( 'Optional. Enter the class name of the default "Powered by WordPress" footer if you&rsquo;d like to hide it.'  ); ?></p>
+			<p class="description"><?php _e( 'Optional. Enter the class name of an existing "Powered by WordPress" footer if you&rsquo;d like to hide it.'  ); ?></p>
 		<?php
 	}
 
